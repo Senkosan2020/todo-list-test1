@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Todo List</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <div style="display: flex;">
+        <aside style="width: 200px; background-color: #f4f4f4; padding: 20px;">
+            <h3>Menu</h3>
+            <ul style="list-style: none; padding-left: 0;">
+                <li><a href="{% url 'task-list' %}">Home</a></li>
+                <li><a href="{% url 'tag-list' %}">Tags</a></li>
+            </ul>
+        </aside>
+        <main style="flex-grow: 1; padding: 20px;">
+            {% block content %}
+            {% endblock %}
+        </main>
+    </div>
+</body>
+</html>

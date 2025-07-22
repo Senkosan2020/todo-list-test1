@@ -1,0 +1,42 @@
+{% extends "tasks/base.html" %}
+
+{% block content %}
+<h1>TODO list</h1>
+
+<div style="text-align: right; margin-bottom: 15px;">
+    <a href="{% url 'task-add' %}" style="background-color: dodgerblue; color: white; padding: 6px 12px; text-decoration: none; border-radius: 4px;">Add task</a>
+</div>
+
+{% for task in tasks %}
+    <div style="margin-bottom: 20px;">
+        <p style="font-size: 18px; font-weight: bold;">
+            {{ task.content }}
+            <span style="color: {% if task.is_done %}green{% else %}red{% endif %}; font-weight: normal;">
+                {% if task.is_done %}Done{% else %}Not done{% endif %}
+            </span>
+        </p>
+        <p>Created: {{ task.created_at|date:"F d, Y, P" }}{% if task.deadline %}.
+            <span style="color: brown;">Deadline: {{ task.deadline|date:"F d, Y, P" }}</span>
+        {% endif %}</p>
+        <p>
+            Tags:
+            {% for tag in task.tags.all %}
+                {{ tag.name }}
+            {% empty %}
+                —
+            {% endfor %}
+            <a href="{% url 'task-edit' task.pk %}" style="margin-left: 10px;">Update</a>
+            <a href="{% url 'task-delete' task.pk %}" style="margin-left: 10px;">Delete</a>
+        </p>
+        <form method="post" action="{% url 'task-toggle' task.pk %}">
+            {% csrf_token %}
+            <button type="submit" style="background-color: {% if task.is_done %}#6c757d{% else %}#2c7a3f{% endif %}; color: white; padding: 4px 10px; border: none; border-radius: 4px;">
+                {% if task.is_done %}Undo{% else %}Complete{% endif %}
+            </button>
+        </form>
+        <hr>
+    </div>
+{% empty %}
+    <p>No tasks found.</p>
+{% endfor %}
+{% endblock %}

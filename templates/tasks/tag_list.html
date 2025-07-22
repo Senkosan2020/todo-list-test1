@@ -1,0 +1,36 @@
+{% extends "tasks/base.html" %}
+
+{% block content %}
+<h1>Tags</h1>
+
+<div style="text-align: right; margin-bottom: 15px;">
+    <a href="{% url 'tag-add' %}" style="background-color: dodgerblue; color: white; padding: 6px 12px; text-decoration: none; border-radius: 4px;">Add</a>
+</div>
+
+<table>
+    <thead>
+        <tr>
+            <th style="padding-right: 20px;">Name</th>
+            <th>Update</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for tag in tags %}
+        <tr>
+            <td style="padding-right: 20px;">{{ tag.name }}</td>
+            <td>
+                <a href="{% url 'tag-edit' tag.pk %}" style="background-color: #6c757d; color: white; padding: 4px 12px; text-decoration: none; border-radius: 4px;">Update</a>
+            </td>
+            <td>
+                <a href="{% url 'tag-delete' tag.pk %}" style="background-color: #6c757d; color: white; padding: 4px 12px; text-decoration: none; border-radius: 4px;">Delete</a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="3">No tags available.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
