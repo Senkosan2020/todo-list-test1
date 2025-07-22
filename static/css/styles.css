@@ -1,0 +1,80 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    margin-bottom: 20px;
+}
+
+aside {
+    height: 100vh;
+    border-right: 1px solid #ccc;
+}
+
+aside h3 {
+    margin-top: 0;
+}
+
+aside ul {
+    padding: 0;
+}
+
+aside ul li {
+    margin-bottom: 10px;
+}
+
+aside a {
+    text-decoration: none;
+    color: #007bff;
+}
+
+aside a:hover {
+    text-decoration: underline;
+}
+
+main {
+    padding: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+table th,
+table td {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    text-align: left;
+}
+
+button {
+    cursor: pointer;
+    font-size: 14px;
+}
+
+form {
+    margin-top: 15px;
+}
+
+a.button-link {
+    display: inline-block;
+    padding: 6px 12px;
+    text-decoration: none;
+    color: white;
+    border-radius: 4px;
+    background-color: #007bff;
+}
+
+a.button-link:hover {
+    background-color: #0056b3;
+}
+
+.task-item {
+    margin-bottom: 25px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+}
